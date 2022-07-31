@@ -1,4 +1,5 @@
 import sqlite3
+import os
 import pandas as pd
 
 class project:
@@ -8,7 +9,8 @@ class project:
         '''initialize project object with project name and sprint duration (days)'''
 
         #create database
-        self.conn = sqlite3.connect(f'{name}.sqlite')
+        dir = os.getcwd()
+        self.conn = sqlite3.connect(f'{dir}/projects/{name}.sqlite')
         self.cursor = self.conn.cursor()
 
         #create scrum team table
